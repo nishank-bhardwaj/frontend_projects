@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nishank Bhardwaj | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="#top" class="brand">NB<span>.dev</span></a>
+    <nav>
+      <ul class="menu">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#work">Projects</a></li>
+        <li><a href="#reach-me">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="banner" id="top">
+    <h1>Hi, I'm <em>Nishank</em></h1>
+    <p>MCA student learning to build reliable backend systems.</p>
+    <a class="btn" href="#work">See my work</a>
+  </section>
+
+  <section class="block" id="work">
+    <h2>Project Showcase</h2>
+    <div class="gallery">
+      <article class="tile">
+        <h3>Library Tracker</h3>
+        <p>Console app in Java to issue and return books.</p>
+        <span class="tag">Java</span>
+      </article>
+      <article class="tile">
+        <h3>Weather Widget</h3>
+        <p>Shows live temperature for a searched city.</p>
+        <span class="tag">JavaScript</span>
+      </article>
+      <article class="tile">
+        <h3>Expense Splitter</h3>
+        <p>Divide group bills fairly between friends.</p>
+        <span class="tag">HTML/CSS</span>
+      </article>
+      <article class="tile">
+        <h3>Quiz Arena</h3>
+        <p>Timed multiple-choice quiz with scoring.</p>
+        <span class="tag">JavaScript</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="block alt" id="reach-me">
+    <h2>Get In Touch</h2>
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks! (demo form)'); this.reset();">
+      <label for="n">Name</label>
+      <input id="n" type="text" required>
+      <label for="e">Email</label>
+      <input id="e" type="email" required>
+      <label for="m">Message</label>
+      <textarea id="m" rows="5" required></textarea>
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </section>
+
+  <footer class="foot">&copy; 2026 Nishank Bhardwaj</footer>
+</body>
+</html>

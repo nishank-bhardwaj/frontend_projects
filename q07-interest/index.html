@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Interest Calculator</title>
+  <style>
+    body { font-family:Segoe UI, sans-serif; background:#fdf6e3; display:grid; place-items:center; min-height:100vh; margin:0; }
+    .card { background:#fff; padding:30px; width:320px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,.15); }
+    h2 { text-align:center; margin-top:0; }
+    label { display:block; font-size:.85rem; margin-top:12px; }
+    input { width:100%; padding:10px; box-sizing:border-box; margin-top:4px; }
+    button { width:100%; margin-top:18px; padding:11px; background:#2e7d32; color:#fff; border:0; border-radius:6px; cursor:pointer; }
+    #output { margin-top:18px; text-align:center; font-weight:bold; }
+    #output.error { color:#c62828; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Simple Interest</h2>
+    <label for="p">Principal (₹)</label><input id="p" type="number" min="0">
+    <label for="r">Rate (% per year)</label><input id="r" type="number" min="0" step="any">
+    <label for="t">Time (years)</label><input id="t" type="number" min="0" step="any">
+    <button id="go">Calculate</button>
+    <div id="output"></div>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

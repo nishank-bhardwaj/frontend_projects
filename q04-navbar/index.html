@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:Verdana, sans-serif; }
+
+    .navbar {
+      position:relative;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:0 32px; height:64px;
+      background:#0f2d3f; color:#fff;
+    }
+    .site-title { font-size:1.4rem; font-weight:bold; letter-spacing:1px; }
+    .site-title b { color:#4fd1c5; }
+
+    .links { display:flex; gap:28px; list-style:none; }
+    .links a { color:#e8f1f5; text-decoration:none; padding:8px 4px; transition:color .25s, border-color .25s; border-bottom:2px solid transparent; }
+    .links a:hover { color:#4fd1c5; border-bottom-color:#4fd1c5; }
+
+    #toggle { display:none; }
+    .burger { display:none; cursor:pointer; flex-direction:column; gap:5px; }
+    .burger span { width:26px; height:3px; background:#fff; border-radius:2px; }
+
+    @media (max-width:700px) {
+      .navbar { padding:0 18px; }
+      .burger { display:flex; }
+      .links {
+        display:none; flex-direction:column; gap:0;
+        position:absolute; top:64px; left:0; right:0;
+        background:#143a50; text-align:center;
+      }
+      .links li a { display:block; padding:16px; border-bottom:1px solid #1e4d68; }
+      #toggle:checked ~ .links { display:flex; }
+    }
+
+    .hero { padding:60px 32px; text-align:center; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="site-title">Code<b>Hub</b></div>
+
+    <input type="checkbox" id="toggle">
+    <label for="toggle" class="burger" aria-label="Toggle menu"><span></span><span></span><span></span></label>
+
+    <ul class="links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Portfolio</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="hero">
+    <h1>Pure CSS Responsive Navigation</h1>
+    <p>Resize the window below 700px to see the hamburger menu.</p>
+  </main>
+</body>
+</html>

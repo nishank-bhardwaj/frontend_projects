@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6 Registration + Dashboard</title>
+  <style>
+    body { font-family:Arial, sans-serif; background:#f0f4f8; max-width:520px; margin:40px auto; padding:0 16px; }
+    .box { background:#fff; padding:22px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,.12); margin-bottom:18px; }
+    input { padding:9px; width:100%; box-sizing:border-box; margin:6px 0; }
+    button { padding:10px 22px; background:#5e35b1; color:#fff; border:0; border-radius:6px; cursor:pointer; }
+    button:disabled { background:#999; }
+    #logs { background:#111; color:#7CFC98; font-family:monospace; font-size:.85rem; padding:12px; border-radius:8px; min-height:80px; white-space:pre-wrap; }
+    [hidden] { display:none; }
+  </style>
+</head>
+<body>
+  <h1>User Onboarding</h1>
+
+  <div class="box" id="formBox">
+    <input id="uName" placeholder="Name">
+    <input id="uMail" placeholder="Email">
+    <input id="uSkills" placeholder="Skills (comma separated)">
+    <button id="submitBtn">Register</button>
+  </div>
+
+  <div class="box" id="dash" hidden></div>
+
+  <h3>Execution log (also in console)</h3>
+  <div id="logs"></div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

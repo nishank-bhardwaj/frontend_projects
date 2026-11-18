@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <style>
+    body { font-family:Arial, sans-serif; background:#e9eef5; display:grid; place-items:center; min-height:100vh; margin:0; }
+    form { background:#fff; width:340px; padding:30px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.15); }
+    h2 { text-align:center; margin-top:0; }
+    .row { margin-bottom:14px; }
+    label { font-size:.9rem; font-weight:bold; }
+    input { width:100%; padding:10px; margin-top:4px; border:1px solid #bbb; border-radius:6px; box-sizing:border-box; }
+    input.bad { border-color:#d93025; }
+    input.good { border-color:#188038; }
+    .msg { display:block; min-height:16px; font-size:.8rem; color:#d93025; margin-top:3px; }
+    button { width:100%; padding:12px; border:0; border-radius:6px; background:#1a73e8; color:#fff; font-size:1rem; cursor:pointer; }
+    #result { text-align:center; margin-top:14px; font-weight:bold; color:#188038; }
+  </style>
+</head>
+<body>
+  <form id="signup" novalidate>
+    <h2>Create Account</h2>
+    <div class="row"><label for="fullName">Full name</label><input id="fullName" type="text"><span class="msg" data-for="fullName"></span></div>
+    <div class="row"><label for="mail">Email</label><input id="mail" type="text"><span class="msg" data-for="mail"></span></div>
+    <div class="row"><label for="pwd">Password</label><input id="pwd" type="password"><span class="msg" data-for="pwd"></span></div>
+    <div class="row"><label for="pwd2">Confirm password</label><input id="pwd2" type="password"><span class="msg" data-for="pwd2"></span></div>
+    <button type="submit">Register</button>
+    <p id="result"></p>
+  </form>
+
+  <script>
+    const MIN_LEN = 8;
+    const emailRegex = /^[\w.+-]+@[\w-]+(\.[\w-]+)+$/;
+    const $ = (id) => document.getElementById(id);
+
+    // each validator returns an error string, or "" when valid
+    const rules = {
+      fullName: (v) => (v.trim() === "" ? "Name is required" : v.trim().length < 2 ? "Name is too short" : ""),
+      mail:     (v) => (v.trim() === "" ? "Email is required" : !emailRegex.test(v.trim()) ? "Enter a valid email address" : ""),
+      pwd:      (v) => (v === "" ? "Password is required" : v.length < MIN_LEN ? `Use at least ${MIN_LEN} characters` : ""),
+      pwd2:     (v) => (v === "" ? "Please confirm your password" : v !== $("pwd").value ? "Passwords do not match" : "")
+    };
+
+    const check = (id) => {
+      const error = rules[id]($(id).value);
+      document.querySelector(`[data-for="${id}"]`).textContent = error;
+      $(id).className = error ? "bad" : "good";
+      return error === "";
+    };
+
+    // live feedback while typing
+    Object.keys(rules).forEach((id) => $(id).addEventListener("input", () => {
+      check(id);
+      if (id === "pwd" && $("pwd2").value) check("pwd2");
+    }));
+
+    $("signup").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const allOk = Object.keys(rules).map(check).every(Boolean); // run all so every error shows
+      $("result").textContent = allOk ? "Account created successfully!" : "";
+      if (allOk) {
+        e.target.reset();
+        document.querySelectorAll("input").forEach((i) => (i.className = ""));
+      }
+    });
+  </script>
+</body>
+</html>
