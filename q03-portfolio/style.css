@@ -39,3 +39,6 @@ body { font-family:"Segoe UI", Tahoma, sans-serif; background:var(--soft); color
   .topbar { flex-direction:column; gap:10px; }
   .banner { padding:70px 6%; }
 }
+
+/* Updated color scheme in development branch */
+body { background-color: #f4f6f8; }
